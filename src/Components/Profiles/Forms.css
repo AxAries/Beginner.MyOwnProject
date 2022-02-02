@@ -1,0 +1,45 @@
+.background{
+    background-color: #eee;
+    font-size: 29px;
+}
+#main{
+    margin-left: 200px;
+}
+
+.Company{
+    margin: 20px 100px 20px 100px;
+}
+.Data{
+    margin: 20px 100px 20px 100px;
+}
+.Positions{
+    margin: 20px 100px 20px 100px;
+}
+.Description{
+    margin: 20px 100px 20px 100px;
+}
+.School{
+    margin: 20px 100px 20px 100px;
+}
+
+.ss{
+    min-width: 150px;
+    margin: 100px 200px 0px 200px;
+}
+.Education{
+    margin: 20px 100px 20px 100px;
+}
+.Interested{
+    margin: 20px 100px 150px 100px;
+}
+.button{
+    min-width: 150px;
+    margin: 100px 200px 150px 200px;
+}
+.buttonInterested{
+    min-width: 150px;
+    margin: 100px 200px 150px 200px;
+}
+
+
+/* Nie przenosić (jeszcze) do folderu Forms! */
