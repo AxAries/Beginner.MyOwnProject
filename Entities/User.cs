@@ -14,7 +14,7 @@ namespace Beginner.MyOwnProject.Entities
         public int phone_number { get; set; }
         public string? NIP {get; set;}
         public string passwordHash { get; set; }
-        public int roleID { get; set; }
+        public int UserRoleId { get; set; }
         public virtual UserRole UserRole { get; set; }
 
     }

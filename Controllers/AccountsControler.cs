@@ -26,5 +26,15 @@ namespace Beginner.MyOwnProject.Controllers
             return Ok();
         }
 
+    [Route("/Login")]
+        [HttpPost]
+        public ActionResult Login([FromBody] ModelLogin mLogin)
+        {
+            string token = _accountServices.genwt(mLogin);
+            return Ok(token);
+        }
     }
+   // 
+    
+
 }

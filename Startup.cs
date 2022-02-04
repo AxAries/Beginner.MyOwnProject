@@ -14,6 +14,12 @@ using Microsoft.EntityFrameworkCore;
 using Beginner.MyOwnProject.Entities;
 using Beginner.MyOwnProject.Services;
 using Microsoft.AspNetCore.Identity;
+using FluentValidation;
+using Beginner.MyOwnProject.Models;
+using Beginner.MyOwnProject.Validation;
+using FluentValidation.AspNetCore;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Beginner.MyOwnProject
 {
@@ -29,17 +35,40 @@ namespace Beginner.MyOwnProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var authenticationSchema = new AuthenticationSchema();
+
+            Configuration.GetSection("Authentication").Bind(authenticationSchema);
+
+            services.AddSingleton(authenticationSchema);
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:")
+                builder.WithOrigins("http://localhost:3000")
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddControllers();
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = "Bearer";
+                opt.DefaultScheme = "Bearer";
+                opt.DefaultChallengeScheme = "Bearer";
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer= authenticationSchema.JwtIssuer,
+                    ValidAudience= authenticationSchema.JwtIssuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSchema.JwtKey)),
+                };
+            });
+            services.AddControllers().AddFluentValidation();
             services.AddDbContext<BeginnerDbcontext>();
             services.AddScoped<IAccountServices, AccountServices>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+            services.AddScoped<IValidator<RegisterUser>, RegisterUserValidation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,16 +79,16 @@ namespace Beginner.MyOwnProject
                 app.UseDeveloperExceptionPage();
             }
 
-           
-            
 
-            
+
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
             
-            app.UseCors();
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
