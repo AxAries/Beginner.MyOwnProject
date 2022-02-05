@@ -1,0 +1,227 @@
+    .Profile_Section{
+    flex-direction: column;
+    justify-content: center;
+    background: #eee;
+    }
+    
+    
+    /* Panel witajacy */
+    
+    .Profile_Dashboard-Welcome{
+        margin-top: 10px;
+        background: #ffffff;
+        border-radius: 20px;
+        width: 1300px;
+        height: 400px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .Profile_Dashboard-Welcome-Picture{
+        width: 400px;
+        height: 400px;
+        padding-left: 50px;
+        padding-top: 50px;
+        border-radius: 20px;
+    }
+    .Profile_image{
+        height: 300px;
+        width: 300px;
+        border-radius: 10px;
+    }
+    .Profile_Dashboard-Welcome h2 {
+        font-family: Jost;
+        font-style: Bold;
+        font-size: 40px;
+        padding-left: 25px;
+        padding-top: 50px;
+    }
+    .Profile_Dashboard-Welcome ul li {
+        font-family: Jost;
+        font-style: normal;
+        font-size: 25px;
+        background: rgba(218, 218, 218, 0.51);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        margin-bottom: 10px; 
+        
+    }
+    .Profile_Info {
+        padding-left: 25px;
+        padding-top: 10px;
+    }
+    
+    
+
+    
+    /* Opcje konta */
+    
+    .ProfileEmployer_Options{
+        align-items: flex-start;
+        display: flex;
+    }
+    .ProfileEmployer_Options h1{
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 35px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .ProfileEmployer_Options button{
+        border-radius: 15px;
+        width: 200px;
+        height: 40px;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: Arial;
+        color:black;
+        border: 2px solid #505050;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; 
+        transition-duration: 0.4s;
+        cursor: pointer;
+        
+    
+    }
+    .ProfileEmployer_Options button:hover{
+        background-color: rgb(255, 255, 255);
+        color: black; 
+        border: 2px solid #000000;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .ProfileEmployer_Options-Announcements{
+        margin-top: 30px;
+        background: #ffffff;
+        border-radius: 20px 20px 20px 20px;
+        width: 420px;
+        height: 400px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .ProfileEmployer_Options-Image{
+        width: 390px;
+        height: 200px;
+        margin: 15px 0px 15px 15px;
+        border-radius: 10px;
+    
+    }
+    .ProfileEmployer_Options-AddAnnouncements{
+        margin: 10px 20px 10px 20px;
+        margin-top: 30px;
+        background: #ffffff;
+        border-radius: 20px 20px 20px 20px;
+        width: 420px;
+        height: 400px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .ProfileEmployer_Options-Candidates{
+        margin-top: 30px;
+        background: #ffffff;
+        border-radius: 20px 20px 20px 20px;
+        width: 420px;
+        height: 400px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+    
+    .ProfileEmployer_Options-Two{
+        align-items: flex-start;
+        display: flex;
+    }
+    .ProfileEmployer_Options-Two button{
+        border-radius: 15px;
+        width: 200px;
+        height: 40px;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: Arial;
+        color:black;
+        border: 2px solid #505050;
+        margin: 0 auto;
+        top:100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; 
+        transition-duration: 0.4s;
+        cursor: pointer;
+        
+    
+    }
+    .ProfileEmployer_Options-Two button:hover{
+        background-color: rgb(255, 255, 255);
+        color: black; 
+        border: 2px solid #000000;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .ProfileEmployer_Options-Two h1{
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 35px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .ProfileEmployer_Options-Two h4{
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 24px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .ProfileEmployer_Options-Two p{
+        font-family: Arial;
+        font-weight: 400;
+        font-size: 24px;
+        text-align: center;
+    }
+ 
+    
+    .ProfileEmployer_Options-Two-Pay{
+        margin: 30px 0px 0px 0px;
+        background: #ffffff;
+        border-radius: 20px;
+        width: 640px;
+        height: 540px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .ProfileEmployer_Options-Two-Test{
+        margin: 30px 0px 0px 20px;
+        background: #ffffff;
+        border-radius: 20px;
+        width: 640px;
+        height: 540px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .ProfileEmployer_Options-Two-PaySize{
+        width: 640px;
+        height: 400px;
+    }
+
+    .ProfileEmployer_Options-Two-AccountPayment{
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #000000;
+    position: relative;
+    border-radius: 20px;
+    width: 400px;
+    height: 300px;
+    margin: 0px 0px 0px 120px;
+    top: 30px;
+    }
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
