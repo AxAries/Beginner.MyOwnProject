@@ -1,169 +1,90 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { FloatingLabel } from "react-bootstrap";
+import "antd/dist/antd.css";
+import { Table, Divider, Tag } from "antd";
+import { EditOutlined  } from '@ant-design/icons';
+import Footer from "../../Components/Footer/Footer";
+import { Row, Container } from "react-bootstrap";
+import React, { useState, useEffect, Component } from "react";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import "./Login.css";
-import { useForm } from "react-hook-form";
-import { BiArrowBack } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
-import { login } from "../../Redux/User/auth";
-import { clearMessage } from "../../Redux/User/message";
-
 import axios from "axios";
-const Login = (setUser) => {
-  const [loading, setLoading] = useState(false);
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(clearMessage());
-  }, [dispatch]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
-  const onSubmit = (data, e) => {
-    e.preventDefault();
-    setLoading(true);
 
-    dispatch(login({ email: data.email, password: data.password }))
-      .unwrap()
-      .then(() => {
-        window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  };
-  if (isLoggedIn) {
-    navigate("/");
-  }
 
-  return (
-    <section
-      className="gradient-form rounded-25"
-      style={{ backgroundColor: "#eee" }}
-    >
-      <Link to={"/"}>
-        <BiArrowBack className="back-arrow" />
-      </Link>
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-xl-10">
-            <div className="card rounded-3 text-black">
-              <div className="row g-0">
-                <div className="col-lg-6">
-                  <div className="card-body p-md-5 mx-md-4">
-                    <div className="text-center">
-                      <h2>Beginner.pl</h2>
-                      <h4 className="mt-1 mb-5 pb-1">We are Beginner.pl</h4>
-                    </div>
+export default class Login extends Component {
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <p className="text-center">Logowanie do konta</p>
+handleSubmit = e => {
+  e.preventDefault();
 
-                      <div className="form-outline mb-4">
-                        <FloatingLabel
-                          controlId="floatingLoginEmail"
-                          label="Email"
-                          className="form-label"
-                        >
-                          <Form.Control
-                            type="email"
-                            className="form-control"
-                            placeholder="name@example.com"
-                            {...register("email", {
-                              required: true,
-                            })}
-                          />
-                          {errors?.email?.type === "required" && (
-                            <p>Email jest wymagany</p>
-                          )}
-                        </FloatingLabel>
-                      </div>
+const data = {
+  email:this.email,
+  password:this.password
+}
 
-                      <div className="form-outline mb-4">
-                        <FloatingLabel
-                          controlId="floatingPasswordEmail"
-                          label="Password"
-                          className="form-label"
-                        >
-                          <Form.Control
-                            type="password"
-                            className="form-control"
-                            placeholder="name@example.com"
-                            {...register("password", {
-                              required: "Hasło jest wymagane",
-                              minLength: 6,
-                              maxLength: 20,
-                            })}
-                          />
-                          {errors?.password?.type === "minLength" && (
-                            <p>Hasło nie może być krótsze niż 6 znaków</p>
-                          )}
-                          {errors?.password?.type === "maxLength" && (
-                            <p>Hasło nie może być dłuższe niż 20 znaków</p>
-                          )}
-                          {errors.password && (
-                            <p style={{ color: "red" }}>
-                              {errors.password.message}
-                            </p>
-                          )}
-                        </FloatingLabel>
-                      </div>
+axios.post('https://localhost:5001/Login', data)
+.then(res =>{
+  const token = res.data.token;
+  localStorage.setItem('jwtToken', token)
+  console.log(token)
+})
+.catch(err =>{
+  console.log(err)
+})
+console.log(data)
+localStorage.setItem('email', this.email)
 
-                      <div className="text-center pt-1 mb-5 pb-1">
-                        <button
-                          className="btn btn-primary btn-block fa-lg gradient-custom-3 mb-3"
-                          type="submit"
-                        >
-                          {loading && (
-                            <span className="spinner-border spinner-border-sm"></span>
-                          )}
-                          Zaloguj się
-                        </button>
-                        {}
-                        <Link className="text-muted" to="/ForgotPassword">
-                          Zapomniałeś hasła?
-                        </Link>
-                      </div>
+alert("Twoje dane zostały wysłane" );
 
-                      <div className="d-flex align-items-center justify-content-center pb-4">
-                        <p className="mb-0 me-2">Nie posiadasz konta?</p>
-                        <Link
-                          type="button"
-                          className="btn btn-outline-danger"
-                          to="/Register"
-                        >
-                          Stwórz konto
-                        </Link>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
-                  <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                    <h4 className="mb-4">We are more than just a company</h4>
-                    <p className="small mb-0">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+
 };
-export default Login;
+
+
+
+render()
+{
+
+return (
+
+<div>
+<section style={{ backgroundColor: "#eee" }}>
+  <Container className="justify-content-center align-items-center py-5">
+    <Row className="justify-content-around align-items-top">
+    <div>
+    <div className="Login">
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            onChange={e=>this.email= e.target.value}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            onChange={e=>this.password= e.target.value}
+          />
+        </Form.Group>
+        <a href="/StrefaPracodawcy">
+        <Button block size="lg" type="submit" >
+          Login
+        </Button>
+        </a>
+      </Form>
+    </div>
+    </div>
+    </Row>
+  </Container>
+</section>
+<Footer />
+</div>
+
+
+  );
+}
+
+}

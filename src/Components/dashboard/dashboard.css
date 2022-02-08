@@ -1,0 +1,24 @@
+.Column{
+    align-items: flex-start;
+        display: flex;
+}
+
+.Salary{
+    float: right;
+    font-size: 18px;
+}
+
+.card{
+    transition-duration: 0.5s;
+  }
+
+.card-img-top {
+    height: 25vh;
+  }
+  
+.card:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02, 1.02);
+    
+  }
+

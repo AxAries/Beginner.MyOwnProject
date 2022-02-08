@@ -8,81 +8,6 @@ import React, { useState, useEffect } from "react";
 import User from "./Candidates/Users";
 import AddUser from './Candidates/AddUser';
 
-const columns = [
-    {
-      title: "Tytuł",
-      dataIndex: "name",
-      key: "name",
-      render: text => <a href="javascript:;">{text}</a>
-    },
-    {
-      title: "Aplikacje",
-      dataIndex: "age",
-      key: "age"
-    },
-    {
-      title: "Status",
-      dataIndex: "address",
-      key: "address"
-    },
-    {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: tags => (
-        <span>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </span>
-      )
-    },
-    {
-      title: "Działanie",
-      key: "action",
-      render: (text, record) => (
-        <span>
-        <Button type="primary" icon={<EditOutlined />} value="large" >
-          Edytuj
-        </Button>
-        </span>
-        
-      )
-    }
-  ];
-  
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"]
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"]
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["cool", "teacher"]
-    }
-  ];
-
 
 
 
@@ -138,9 +63,6 @@ const onAdd = async (offerText, city, street,SalaryFrom,SalaryTo) => {
 };
 
 
-
-
-
 console.log(users)
 return (
 
@@ -149,14 +71,59 @@ return (
 <section style={{ backgroundColor: "#eee" }}>
   <Container className="justify-content-center align-items-center py-5">
     <Row className="justify-content-around align-items-top">
-    <Table columns={columns} dataSource={data} bordered />,
     <div>
-    <AddUser onAdd={onAdd} />
-      {
-        users.map((user) => (
-          <User offerText={user.offerText} city={user.city} street={user.street}/>
-        ))
-      }
+    <div>
+          <div className="Myn">
+          <h1>
+            Kandydaci
+            </h1>
+            </div>
+      <table class="blueTable">
+          <thead>
+            <tr>
+              <th>Tytuł</th>
+              <th>Miasto</th>
+              <th>Ulica</th>
+              <th>Języki</th>
+              <th>Działanie</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="7">
+                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+              </td>
+            </tr>
+          </tfoot>
+        <tbody>
+        {users.map((user) => (
+          <tr>
+           <td><a href="/StrefaPracodawcy-kandydaci">{user.offerText}</a></td>
+            <td>{user.city}</td>
+            <td>{user.street}</td>
+            <td>{user.languages}</td>
+            <td>
+              
+              <span>
+                <Button className="But" type="primary" icon={<EditOutlined />} value="large" >
+                Edytuj
+               </Button>
+               <div className="cc">
+               </div>
+               <Button className="But" type="primary" icon={<EditOutlined />} value="large" >
+                Usuń
+               </Button>
+              </span>
+            </td>
+          </tr>
+          ))}
+        </tbody>
+      </table>
+
+
+
+
+        </div>
     </div>
     </Row>
   </Container>

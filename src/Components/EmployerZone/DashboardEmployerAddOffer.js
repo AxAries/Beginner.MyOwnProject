@@ -30,7 +30,7 @@ const fetchData = async () => {
 }
 
 const onAdd = async (offerText, city, street,SalaryFrom,SalaryTo, languages) => {
-  await fetch("https://localhost:5001/offers", {
+  await fetch("https://localhost:5001/AddOffer", {
     method: "POST",
     body: JSON.stringify({
       offerText: offerText,
@@ -70,7 +70,6 @@ return (
     <Row className="justify-content-around align-items-top">
     <div>
     <AddUser onAdd={onAdd} />
-
     </div>
     </Row>
   </Container>

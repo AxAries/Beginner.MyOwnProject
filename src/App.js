@@ -19,6 +19,8 @@ import CVandDocuments from "./Components/Profiles/DocumentsUser/CVandDocuments";
 import DashboardEmployer from "./Components/EmployerZone/DashboardEmployer";
 import DashboardEmployerCandidates from "./Components/EmployerZone/DashBoardEmployerCandidates";
 import DashboardEmployerAddOffer from "./Components/EmployerZone/DashboardEmployerAddOffer";
+import DashboardNew from "./Components/dashboard/dashboard";
+import Dash from "./Sessions/Login/dash";
 function App() {
   return (
     <React.Fragment>
@@ -42,6 +44,8 @@ function App() {
         <Route path="/StrefaPracodawcy" element={<DashboardEmployer />} />
         <Route path="/StrefaPracodawcy-DodajOferte" element={<DashboardEmployerAddOffer />} />
         <Route path="/StrefaPracodawcy-kandydaci" element={<DashboardEmployerCandidates />} />
+        <Route path="/DashboardNew" element={<DashboardNew />} />
+        <Route path="/Dash" element={<Dash />} />
         <Route path="/DlaPracodawcow" />
         <Route path="/MapaPracy" />
         <Route path="/O-Nas" />

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Navbartop from "../Navbar/Navbartop";
 import Footer from "../Footer/Footer";
 
-import { OfferShortInfo } from "../Offers/OfferShortInfo";
+import  OfferShortInfo  from "../Offers/OfferShortInfo";
 import OfferList from "../Offers/OfferList";
 
 import { Row, Container } from "react-bootstrap";

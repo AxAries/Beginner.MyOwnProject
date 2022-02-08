@@ -7,29 +7,14 @@ import Navbartop from "../Navbar/Navbartop";
 import { Row, Container } from "react-bootstrap";
 import "./MyStyle.css";
 import axios from "axios";
-
+import CBottons from "./buttons/buttons";
 
 
 
 
 function Profile(){
    
-
-
-
-
-  
-      const [todos, setTodos] = useState([]);
-
-
-    const getQuote = () => {
-      axios.get('https://localhost:5001/offers')
-      .then(res => {
-        console.log(res)
-      })
-    }
-
-    const [users, setUsers] = useState([]);
+   const [users, setUsers] = useState([]);
 
     useEffect(() => {
       fetch("https://localhost:5001/offers")
@@ -38,7 +23,33 @@ function Profile(){
         .catch((e) => console.error(e));
     }, []);
 
+
+    const onDelete = async (id) => {
+      await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => {
+          if (res.status !== 200) {
+            return;
+          } else {
+            setUsers(
+              users.filter((user) => {
+                return user.id !== id;
+              })
+            );
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
     
+  
+       
+    
+
+
+
 
 
 return (
@@ -79,21 +90,15 @@ return (
         <tbody>
         {users.map((user) => (
           <tr>
-           <td><a href="">{user.offerText}</a></td>
+           <td><a href="/StrefaPracodawcy-kandydaci">{user.offerText}</a></td>
             <td>{user.city}</td>
             <td>{user.street}</td>
-            <td>{user.languages}</td>
+            <td>{user.languages} </td>
             <td>
-              
               <span>
-                <Button className="But" type="primary" icon={<EditOutlined />} value="large" >
-                Edytuj
-               </Button>
-               <div className="cc">
-               </div>
-               <Button className="But" type="primary" icon={<EditOutlined />} value="large" >
-                Usuń
-               </Button>
+                <CBottons>
+                onDelete={onDelete}
+                </CBottons>
               </span>
             </td>
           </tr>

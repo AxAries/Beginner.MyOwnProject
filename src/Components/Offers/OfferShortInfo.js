@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { FaPeopleArrows, FaBolt, FaClock, FaCheckCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import SkeletonOfert from "../Skeletons/SkeletonOfert";
 import { Link } from "react-router-dom";
 import { getAllOffers } from "../../Redux/Offers/offerSlice";
-export const OfferShortInfo = () => {
+
+function OfferShortInfo () {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const offers = useSelector(getAllOffers);
   const offer_details = offers.offers.filter(
     (offer) => offer.id === offers.selectedOffer
   );
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://localhost:5001/offers")
+      .then((res) => res.json())
+      .then((res) => setUsers(res))
+      .catch((e) => console.error(e));
+  }, []);
+
+  
   return (
     <>
       {offers.loading && [1, 2, 3, 4, 5].map((n) => <SkeletonOfert key={n} />)}
@@ -228,5 +240,5 @@ export const OfferShortInfo = () => {
           ))}
     </>
   );
-};
-export default OfferShortInfo;
+}
+export default OfferShortInfo

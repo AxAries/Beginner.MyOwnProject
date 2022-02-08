@@ -7,6 +7,7 @@ import myaplication from './myaplication.jpg';
 
 function Profile(){
 
+
 return (
 <div>
     <div className="Profile_Section">

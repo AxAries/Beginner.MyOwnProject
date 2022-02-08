@@ -45,14 +45,14 @@ const handleOnSubmit = (e) => {
         <input type="text" class="css-input" placeholder="Ulica" name="street" required/>
         </p>
 
-        <div className="textInfo">Wynagrodzenie od</div>
+        <div className="textInfo">Wynagrodzenie miesięczne od</div>
         <p className="input_appearance">
-        <input type="text" class="css-input" placeholder="Wynagrodzenie od" name="salaryFrom" required />
+        <input type="number" min="1" class="css-input" placeholder="Wynagrodzenie od" name="salaryFrom" required />
         </p>
 
-        <div className="textInfo">Wynagrodzenie do</div>
+        <div className="textInfo">Wynagrodzenie miesięczne do</div>
         <p className="input_appearance">
-        <input type="text" class="css-input" placeholder="Wynagrodzenie do" name="salaryTo" required/>
+        <input type="number" min="2" class="css-input" placeholder="Wynagrodzenie do" name="salaryTo" required/>
         </p>
 
         <div className="textInfo">Języki programowania</div>
