@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./Sessions/Login/Login";
-import Register from "./Sessions/Register/Register";
+import RegisterEmployee from "./Sessions/Register/RegisterEmployee";
+import RegisterEmployer from "./Sessions/Register/RegisterEmployer";
 import Dashboard from "./Components/Pages/Dashboard";
 import ForgotPassword from "./Sessions/ForgotPassword";
 import ConfirmNumber from "./Sessions/ConfirmNumber";
@@ -27,11 +28,12 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/Register" element={<RegisterEmployee />} />
+        <Route path="/RegisterEmployer" element={<RegisterEmployer />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
         <Route path="/ConfirmNumber" element={<ConfirmNumber />} />
-        <Route exact path="/" element={<Dashboard />} />
-        <Route path="/OfertyPracy" element={<OfertyPracy />} />
+        <Route exact path="/" element={<DashboardNew />} />
+        <Route path="/OfertyPracy" element={<DashboardNew />} />
         <Route path="/AddOffer" element={<AddOffer />} />
         <Route path="/Offer/:id" element={<Offer />} />
         <Route path="/Profil/:username" element={<Offer />} />

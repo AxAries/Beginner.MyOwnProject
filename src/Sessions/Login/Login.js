@@ -12,8 +12,8 @@ import axios from "axios";
 
 
 
-
 export default class Login extends Component {
+
 
 handleSubmit = e => {
   e.preventDefault();
@@ -33,12 +33,39 @@ axios.post('https://localhost:5001/Login', data)
   console.log(err)
 })
 console.log(data)
-localStorage.setItem('email', this.email)
+
+
+
+var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  var raw = JSON.stringify({
+    "email": this.email,
+    "password": this.password
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+  
+  fetch("https://localhost:5001/login", requestOptions)
+    .then(response => response.text())
+    .then(result => {localStorage.setItem('KK', result); 
+        console.log(result)})
+    .catch(error => console.log('error', error));
+
+
+
+console.log("nothing")
 
 alert("Twoje dane zostały wysłane" );
 
 
 };
+
 
 
 
@@ -52,9 +79,11 @@ return (
   <Container className="justify-content-center align-items-center py-5">
     <Row className="justify-content-around align-items-top">
     <div>
+      <div className="Card">
     <div className="Login">
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group size="lg" controlId="email">
+      <h2>Logowanie</h2>
+      <Form onSubmit={this.handleSubmit} gap={2}>
+        <Form.Group size="lg" controlId="email" className="mb-3">
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
@@ -62,7 +91,7 @@ return (
             onChange={e=>this.email= e.target.value}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group size="lg" controlId="password" className="mb-5">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -70,11 +99,14 @@ return (
           />
         </Form.Group>
         <a href="/StrefaPracodawcy">
-        <Button block size="lg" type="submit" >
+        <div className="d-grid gap-2 mb-3">
+        <Button size="lg" type="submit" variant="primary"  >
           Login
         </Button>
+        </div>
         </a>
       </Form>
+    </div>
     </div>
     </div>
     </Row>

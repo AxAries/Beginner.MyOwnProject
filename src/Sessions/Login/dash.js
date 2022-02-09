@@ -4,18 +4,12 @@ import React, { Component } from "react";
 
 export default class home extends Component{
 
-
-
-
 componentDidMount(){
     const config = {
         headers: {
-            Authorization: 'Bearer' + localStorage.getItem('token')
+            Authorization: 'Bearer ' + localStorage.getItem('KK')
         }
     };
-
-
-
 
     axios.get('https://localhost:5001/Login',config).then(
         res => {

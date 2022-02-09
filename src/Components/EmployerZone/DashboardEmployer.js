@@ -14,10 +14,42 @@ import CBottons from "./buttons/buttons";
 
 function Profile(){
    
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  var raw = JSON.stringify({
+    "email": "sss@ss",
+    "password": "Kasia"
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+  
+  fetch("https://localhost:5001/login", requestOptions)
+    .then(response => response.text())
+    .then(result => {localStorage.setItem('KK', result); 
+        console.log(result)})
+    .catch(error => console.log('error', error));
+   
+  
+
+    
+    const config = {
+      headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('KK')
+      }
+  };
+
+  
    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-      fetch("https://localhost:5001/offers")
+      fetch("https://localhost:5001/offers",config)
         .then((res) => res.json())
         .then((res) => setUsers(res))
         .catch((e) => console.error(e));
@@ -43,9 +75,6 @@ function Profile(){
           console.log(err);
         });
     };
-    
-  
-       
     
 
 
@@ -97,7 +126,9 @@ return (
             <td>
               <span>
                 <CBottons>
+                id={1}
                 onDelete={onDelete}
+                
                 </CBottons>
               </span>
             </td>
