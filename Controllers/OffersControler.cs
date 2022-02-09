@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Beginner.MyOwnProject.Entities;
 using Beginner.MyOwnProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,7 @@ namespace Beginner.MyOwnProject.Controllers
         }
     [Route("/AddOffer")]
         [HttpPost]
+        [Authorize(Roles = "Employer")]
         public ActionResult AddOffer([FromBody] AddOfferModel modelofr)
         {
             var addoffer = _ofrMaper.Map<Offers>(modelofr);

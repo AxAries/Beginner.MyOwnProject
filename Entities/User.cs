@@ -13,6 +13,7 @@ namespace Beginner.MyOwnProject.Entities
         public string email { get; set; }
         public int phone_number { get; set; }
         public string? NIP {get; set;}
+        public string? companyname { get; set; }
         public string passwordHash { get; set; }
         public int UserRoleId { get; set; }
         public virtual UserRole UserRole { get; set; }

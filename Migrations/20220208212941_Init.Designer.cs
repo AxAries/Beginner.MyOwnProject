@@ -2,14 +2,16 @@
 using Beginner.MyOwnProject.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Beginner.MyOwnProject.Migrations
 {
     [DbContext(typeof(BeginnerDbcontext))]
-    partial class BeginnerDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20220208212941_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,18 +74,6 @@ namespace Beginner.MyOwnProject.Migrations
                     b.Property<string>("Street")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("companyname")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("position")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("requirements")
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
                     b.HasIndex("EmployerId")
@@ -103,9 +93,6 @@ namespace Beginner.MyOwnProject.Migrations
 
                     b.Property<int>("UserRoleId")
                         .HasColumnType("int");
-
-                    b.Property<string>("companyname")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("email")
                         .HasColumnType("longtext");

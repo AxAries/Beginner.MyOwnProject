@@ -43,6 +43,7 @@ namespace Beginner.MyOwnProject.Services
                 email=regusr.email,
                 phone_number=regusr.phonenumber,
                 NIP=regusr.NIP,
+                companyname=regusr.companyname,
                 UserRoleId=regusr.RoleId,
             
             };

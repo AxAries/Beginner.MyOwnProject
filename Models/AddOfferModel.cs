@@ -7,7 +7,10 @@ namespace Beginner.MyOwnProject.Models
 {
     public class AddOfferModel
     {
-       
+        public string Tilte { get; set; }
+        public string? companyname { get; set; }
+        public string position { get; set; }
+        public string requirements { get; set; }
         public string OfferText { get; set; }
         public string SalaryFrom { get; set; }
         public string SalaryTo { get; set; }

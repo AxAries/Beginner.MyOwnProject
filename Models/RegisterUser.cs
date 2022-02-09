@@ -14,6 +14,7 @@ namespace Beginner.MyOwnProject.Models
         public string password {get; set;}
         public string confirmpassword { get; set; }
         public string? NIP { get; set; }
+        public string? companyname { get; set; }
         public int RoleId { get; set; }
     }
 }
