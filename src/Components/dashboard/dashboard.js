@@ -43,7 +43,7 @@ return (
                 return (
                   <Card
                     title={user.offerText}
-                    text={user.city}
+                    city={user.city}
                     salaryFrom={user.salaryFrom}
                     salaryTo={user.salaryTo}
                   />

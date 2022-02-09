@@ -22,6 +22,7 @@ import DashboardEmployerCandidates from "./Components/EmployerZone/DashBoardEmpl
 import DashboardEmployerAddOffer from "./Components/EmployerZone/DashboardEmployerAddOffer";
 import DashboardNew from "./Components/dashboard/dashboard";
 import Dash from "./Sessions/Login/dash";
+import Who from "./Sessions/Register/Who";
 function App() {
   return (
     <React.Fragment>
@@ -48,6 +49,7 @@ function App() {
         <Route path="/StrefaPracodawcy-kandydaci" element={<DashboardEmployerCandidates />} />
         <Route path="/DashboardNew" element={<DashboardNew />} />
         <Route path="/Dash" element={<Dash />} />
+        <Route path="/ChoiceRegister" element={<Who />} />
         <Route path="/DlaPracodawcow" />
         <Route path="/MapaPracy" />
         <Route path="/O-Nas" />

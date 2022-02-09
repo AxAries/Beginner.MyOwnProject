@@ -59,7 +59,7 @@ export default function Navbartop() {
                 Zaloguj się
               </Button>
 
-              <Button variant="dark" href="/Register">
+              <Button variant="dark" href="/ChoiceRegister">
                 Zarejestruj się
               </Button>
             </Nav>

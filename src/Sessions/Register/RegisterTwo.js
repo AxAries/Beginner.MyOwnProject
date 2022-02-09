@@ -14,6 +14,7 @@ const AddUser = ({onAdd}) => {
         e.target.email.value,
         e.target.phone_number.value,
         e.target.passwordHash.value,
+        e.target.NIP.value,
         );
 
     e.target.name.value = "";
@@ -21,6 +22,7 @@ const AddUser = ({onAdd}) => {
     e.target.email.value = "";
     e.target.phone_number.value = "";
     e.target.passwordHash.value = "";
+    e.target.NIP.value = "";
    
     alert(`Cześć, rejestracja powiodła się sukcesem! :) `);
     window.location.href="/";
@@ -32,7 +34,7 @@ const AddUser = ({onAdd}) => {
 
 
     <div className="wrapper">
-      <h2 className="registerTitle">Rejestracja pracobiorcy</h2>
+      <h2 className="registerTitle">Rejestracja pracodawcy</h2>
       <form className="registerForm" onSubmit={handleOnSubmit} >
         <input className="textInput" type="text" name="name" placeholder="Imię"required/>
         

@@ -61,8 +61,8 @@ var myHeaders = new Headers();
 
 console.log("nothing")
 
-alert("Twoje dane zostały wysłane" );
-
+alert("Zalogowałeś się" );
+window.location.href="/";
 
 };
 
@@ -103,7 +103,12 @@ return (
         <Button size="lg" type="submit" variant="primary"  >
           Login
         </Button>
+        
         </div>
+        </a>
+        <br/>
+        <a href="/ChoiceRegister" >
+        <p className="NewReg">Zarejestruj się</p>
         </a>
       </Form>
     </div>

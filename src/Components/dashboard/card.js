@@ -12,12 +12,11 @@ const Card = (props) => {
                 {props.title}
                 <span class="Salary" > 
                     Wynagrodzenie: {props.salaryFrom} - {props.salaryTo}
-                
                 </span>
                 
                 
                 </h5>
-            <p className="card-text">{props.text}</p>
+            <p className="card-text"> {props.city}</p>
             <a href="" className="btn btn-primary">
               Sprawdź ofertę
             </a>

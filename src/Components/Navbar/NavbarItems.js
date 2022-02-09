@@ -7,7 +7,7 @@ export const NavbarItems = [
   {
     id: 2,
     title: "Dla Pracodawców",
-    url: "/DlaPracodawcow",
+    url: "/StrefaPracodawcy",
   },
   {
     id: 3,
